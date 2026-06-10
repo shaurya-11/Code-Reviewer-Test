@@ -21,7 +21,20 @@ function App() {
     const response = await fetch("/api/users", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email })
+      body: JSON.stringify({ email }),
+    });
+
+    const created = await response.json();
+    setUsers([...users, created]);
+    setEmail("");
+  }
+
+  async function createUser(event) {
+    event.preventDefault();
+    const response = await fetch("/api/users", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email }),
     });
 
     const created = await response.json();
@@ -41,7 +54,11 @@ function App() {
       <form className="form" onSubmit={createUser}>
         <label htmlFor="email">Email</label>
         <div className="row">
-          <input id="email" value={email} onChange={(event) => setEmail(event.target.value)} />
+          <input
+            id="email"
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
+          />
           <button type="submit">Create</button>
         </div>
       </form>
