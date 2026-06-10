@@ -2,6 +2,10 @@ import React, { useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
 import "./styles.css";
 
+function formatUserLabel(user) {
+  return `${user.email} created at ${new Date(user.createdAt).toLocaleString()}`;
+}
+
 function App() {
   const [users, setUsers] = useState([]);
   const [email, setEmail] = useState("");
@@ -45,7 +49,7 @@ function App() {
       <ul className="users">
         {users.map((user) => (
           <li key={user.id}>
-            <span>{user.email}</span>
+            <span>{formatUserLabel(user)}</span>
             <small>{user.createdAt}</small>
           </li>
         ))}
@@ -55,4 +59,3 @@ function App() {
 }
 
 createRoot(document.getElementById("root")).render(<App />);
-
