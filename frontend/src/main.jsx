@@ -29,7 +29,7 @@ function App() {
     <main className="shell">
       <section className="toolbar">
         <div>
-          <p className="eyebrow">Reviewer POC</p>
+          <p className="eyebrow">Reviewer POC Demo</p>
           <h1>User Directory</h1>
         </div>
       </section>
