@@ -41,4 +41,15 @@ public class UserController {
             .findFirst()
             .orElseThrow(() -> new RuntimeException("User not found: " + id));
     }
+
+        @GetMapping("/internal/raw-user/{id}")
+        public Map<String, Object> rawUserLookup(@PathVariable String id) {
+            return userRepository.findAll().stream()
+                .filter(user -> id.equals(user.get("id")))
+                .findFirst()
+                .orElseThrow(() -> new RuntimeException("User not found: " + id));
+        }
+
+
+
 }
